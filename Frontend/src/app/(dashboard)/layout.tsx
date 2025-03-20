@@ -4,6 +4,7 @@ import Sidebar from "@/components/layout/sidebar";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, Clock, Users, ChevronRight  } from 'lucide-react';
 import React from "react";
+import Link from "next/link";
 
 
 
@@ -33,7 +34,13 @@ export default function ContainerLayout({
                       .filter((segment) => segment) // Remove empty segments
                       .map((segment, index, array) => (
                         <React.Fragment key={index}>
-                          <span className="capitalize">{segment}</span>
+                          {index === 0 && array.length > 1 ? (
+                            <Link href={`/${segment}`} className="capitalize text-blue-500 hover:underline">
+                              {segment}
+                            </Link>
+                          ) : (
+                            <span className="capitalize">{segment}</span>
+                          )}
                           {index < array.length - 1 && <ChevronRight size={24} />}
                         </React.Fragment>
                       ))
