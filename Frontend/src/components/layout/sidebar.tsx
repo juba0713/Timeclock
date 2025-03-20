@@ -1,6 +1,6 @@
 'use client';
 import React from 'react'
-import { Image, LayoutDashboard } from 'lucide-react';
+import { Clock, Image, LayoutDashboard, CalendarSync , CalendarCog, CalendarX2, Cog , Users, Group } from 'lucide-react';
 import Link from 'next/link'
 import { usePathname } from "next/navigation";
 
@@ -23,60 +23,60 @@ const Sidebar = () => {
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Dashboard</label>
-                <Link href="/dashboard" className={`flex gap-[0.05rem] text-[1rem] justify-left items-center px-[0.5rem] box-border rounded-[0.25rem] text-white text-center hover:bg-[#498BFF] hover:text-[#ffffff] ${
-    title === 'Dashboard' ? 'bg-[#498BFF] py-[0.25rem]' : ''
-  }`}><LayoutDashboard size={20}/>Dashboard</Link>
+                <Link href="/dashboard" className={`flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff] ${
+                    title === 'Dashboard' ? 'bg-[#498BFF] text-white' : ''}`}><LayoutDashboard size={20}/>Dashboard</Link>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Time Clock</label>
-                <Link href="/timeclock" className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Time Clock</Link>
+                <Link href="/timeclock" className={`flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff] ${
+                    title === 'Timeclock' ? 'bg-[#498BFF] text-white' : ''}`}><Clock size={20}/>Time Clock</Link>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Time Change</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Time Change</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><CalendarSync   size={20}/>Time Change</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Time Off</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Time Off Request</a>
-                <a className="flex gap-[0.05rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Time Off Control</a>
+                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><CalendarX2  size={20}/>Time Off Request</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><CalendarCog  size={20}/>Time Off Control</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Role Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Roles</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><Cog size={20}/>Roles</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">User Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Users</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><Users size={20}/>Users</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><Group  size={20}/>Teams</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
             <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
                 <label className="text-[0.8rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-1 text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
+                <a className="flex gap-[0.25rem] text-[1rem] justify-left items-center py-[0.25rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
             </div>
         </nav>
     </>
