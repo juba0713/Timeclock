@@ -13,6 +13,10 @@ body {
   background: #F1F7FA;
 }
 
+.sidebar{
+  font-size: 0.8rem;
+}
+
 ::-webkit-scrollbar {
   width: 0.3rem; /* Adjust the width to make it thinner */
 }
@@ -32,13 +36,14 @@ button{
 .action-btn{
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.25rem;
   color: white;
   background: #4D8BFF;
   border-radius: 0.25rem;
   padding: 0.5rem 0.5rem;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .action-btn:hover{
@@ -50,12 +55,16 @@ input{
   border-radius: 0.25rem;
   padding: 0.5rem 0.5rem;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border: 0.05rem solid #E0E0E0;
 }
 
 input[type=text]{
   background: #F9FBFF;
+}
+
+table{
+  font-size: 0.8rem;
 }
 
 
