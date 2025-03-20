@@ -50,6 +50,18 @@ button{
   background: #3A76E0;
 }
 
+.action-btn.create{
+  background: #4CAF50;
+}
+
+.action-btn.back{
+  background: #9E9E9E;
+}
+
+.action-btn.cancel{
+  background: #757575;
+}
+
 select,
 input{
   border-radius: 0.25rem;
@@ -59,7 +71,7 @@ input{
   border: 0.05rem solid #E0E0E0;
 }
 
-input[type=text]{
+input, select{
   background: #F9FBFF;
 }
 

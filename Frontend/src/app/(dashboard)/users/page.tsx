@@ -6,8 +6,8 @@ import React from 'react'
 const page = () => {
   return (
     <>
-      <div className="container max-w-full h-full flex flex-col p-[1rem] border-box text-[0.8rem]">
-        <div className="w-full flex flex-col bg-white p-[1rem] border-box border rounded-[0.25rem] border-none" > 
+      <div className="container max-w-full h-full flex flex-col p-[2.5rem] border-box text-[0.8rem]">
+        <div className="w-full flex flex-col bg-white py-[1rem] px-[3rem] border-box border rounded-[0.25rem] border-none" > 
           <div className="flex flex-row justify-between items-center py-[1rem] border-box">
             <div></div>
             <div className="flex flex-row justify-between items-center gap-[0.5rem]">
