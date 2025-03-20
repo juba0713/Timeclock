@@ -1,11 +1,62 @@
-import { LayoutDashboard } from 'lucide-react'
+'use client';
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const page = () => {
+
+  const [formData, setFormData] = useState({
+    email: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    birthDate: '',
+    gender: '',
+    employeeStatus: '',
+    hireDate: '',
+    team: '',
+    userRole: '',
+    username: '',
+    password: '',
+    useEmail: false
+  })
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  console.log(apiUrl);
+
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value
+    })
+  }
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await fetch(`http://localhost:8080/user/new`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      if (response.ok) {
+        alert('User created successfully!')
+      } else {
+        alert('Failed to create user')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+    }
+  }
+  
   return (
     <>
-      <div className="container max-w-full h-full flex flex-col p-[2.5rem] border-box text-[0.8rem] overflow-y-auto">
+      <form onSubmit={handleSubmit} className="container max-w-full h-full flex flex-col p-[2.5rem] border-box text-[0.8rem] overflow-y-auto">
         <div className="w-full flex flex-col bg-white py-[1rem] px-[3rem] border-box border rounded-[0.25rem] border-none" >
           <span className="w-full text-center text-[1rem] py-[0.5rem]">Create User</span>
           <div className="w-full flex flex-row">
@@ -20,9 +71,9 @@ const page = () => {
           <div className="w-full flex flex-row">
             <label className="px-[1rem] py-[0.5rem] w-[20rem] box-border border border-[#E0E0E0] flex justify-center items-center">Full Name</label>
             <div className="px-[1rem] py-[0.5rem] box-border border border-[#E0E0E0] w-full flex gap-[1rem]">
-              <input type="email" placeholder="Enter First Name]" className="w-[30%]"/>
-              <input type="email" placeholder="Enter Middle Name]" className="w-[30%]"/>
-              <input type="email" placeholder="Enter Last Name]" className="w-[30%]"/>
+              <input type="text" placeholder="Enter First Name]" className="w-[30%]"/>
+              <input type="text" placeholder="Enter Middle Name]" className="w-[30%]"/>
+              <input type="text" placeholder="Enter Last Name]" className="w-[30%]"/>
             </div>
           </div>
           <div className="w-full flex flex-row">
@@ -104,7 +155,7 @@ const page = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </>
   )
 }
