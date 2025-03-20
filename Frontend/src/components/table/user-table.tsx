@@ -10,37 +10,37 @@ const UserTable = () => {
                     <tr>
                         <th>
                             <div className="th-content">
-                                <UserRound size={24}/>
+                                <UserRound size={16}/>
                                 <span>Full Name</span>
                             </div>
                          </th>
                          <th>
                             <div className="th-content">
-                                <UserRound size={24}/>
+                                <UserRound size={16}/>
                                 <span>Manager</span>
                             </div>
                          </th>
                          <th>
                             <div className="th-content">
-                                <UserRound size={24}/>
+                                <UserRound size={16}/>
                                 <span>Team</span>
                             </div>
                          </th>
                          <th>
                             <div className="th-content">
-                                <UserRound size={24}/>
+                                <UserRound size={16}/>
                                 <span>Role</span>
                             </div>
                          </th>
                          <th>
                             <div className="th-content">
-                                <UserRound size={24}/>
+                                <UserRound size={16}/>
                                 <span>Status</span>
                             </div>
                          </th>
                          <th>
                             <div className="th-content">
-                                <UserRound size={24}/>
+                                <UserRound size={16}/>
                                 <span>Action</span>
                             </div>
                          </th>
