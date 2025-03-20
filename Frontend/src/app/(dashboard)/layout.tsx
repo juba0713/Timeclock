@@ -2,7 +2,8 @@
 import Header from "@/components/layout/header";
 import Sidebar from "@/components/layout/sidebar";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Clock } from 'lucide-react';
+import { LayoutDashboard, Clock, Users, ChevronRight  } from 'lucide-react';
+import React from "react";
 
 
 
@@ -14,9 +15,9 @@ export default function ContainerLayout({
 
     const pathname = usePathname();
 
-    const title = pathname.split("/").filter(Boolean).pop()?.replace(/^\w/, (c) => c.toUpperCase());
+    const title = pathname.split("/")[1]?.replace(/^\w/, (c) => c.toUpperCase());
 
-    console.log(title);
+    
 
     return <div className="container max-w-full h-full flex flex-col overflow-hidden">
             <Header></Header>
@@ -26,7 +27,17 @@ export default function ContainerLayout({
                 <div className="max-w-full flex flex-row gap-[0.5rem] items-center px-[1rem] py-[1rem] box-border bg-white h-auto border border-[#E0E0E0]"> 
                     {title === "Dashboard" && <LayoutDashboard size={24}/>}
                     {title === "Timeclock" && <Clock size={24}/>}
-                    {title}
+                    {title === "Users" && <Users size={24}/>}
+                    {pathname
+                      .split("/")
+                      .filter((segment) => segment) // Remove empty segments
+                      .map((segment, index, array) => (
+                        <React.Fragment key={index}>
+                          <span className="capitalize">{segment}</span>
+                          {index < array.length - 1 && <ChevronRight size={24} />}
+                        </React.Fragment>
+                      ))
+                    }
                 </div>
                 {children}
             </div>
