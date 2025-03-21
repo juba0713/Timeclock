@@ -24,7 +24,7 @@ export default function ContainerLayout({
             <Header></Header>
             <div className="container max-w-full max-h-full flex flex-row overflow-hidden">
             <Sidebar></Sidebar>
-            <div className="container max-w-full h-full flex flex-col">
+            <div className="container max-w-full h-full flex flex-col relative">
                 <div className="max-w-full flex flex-row gap-[0.5rem] items-center px-[1rem] py-[1rem] box-border bg-white h-auto border border-[#E0E0E0]"> 
                     {title === "Dashboard" && <LayoutDashboard size={24}/>}
                     {title === "Timeclock" && <Clock size={24}/>}

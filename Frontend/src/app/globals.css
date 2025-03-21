@@ -102,3 +102,7 @@ table, td {
 table tbody tr:not(:last-child){
   border-bottom: 0.05rem solid #E0E0E0;
 }
+
+.w-webkit{
+  width: -webkit-fill-available;
+}

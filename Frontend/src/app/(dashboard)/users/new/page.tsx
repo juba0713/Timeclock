@@ -1,6 +1,7 @@
 'use client';
 import { saveUser, SaveUserParams } from '@/api/user/saveUser';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
 const page = () => {
@@ -21,12 +22,21 @@ const page = () => {
     useEmail: false
   })
 
-  const handleSubmit = async (e) => {
+  const router = useRouter();
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("HELLO");
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const isSuccess = await saveUser(formData);
       if (isSuccess) {
         console.log('User created successfully!');
+        setTimeout(() => {
+          router.push('/users?status=success');
+        }, 3000);
       } else {
         console.log('Failed to create user');
       }
@@ -132,7 +142,7 @@ const page = () => {
             <div className="flex gap-[0.5rem]">
               <Link className="action-btn cancel"href="/dashboard">Cancel</Link>
               <Link className="action-btn back"href="/users">Back</Link>
-              <button className="action-btn create">Create</button>
+              <button className="action-btn create" disabled={isSubmitting}>{isSubmitting ? 'Saving...' : 'Save'}</button>
             </div>
           </div>
         </div>
