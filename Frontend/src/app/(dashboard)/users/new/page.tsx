@@ -1,10 +1,11 @@
 'use client';
+import { saveUser, SaveUserParams } from '@/api/user/saveUser';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
 const page = () => {
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<SaveUserParams>({
     email: '',
     firstName: '',
     middleName: '',
@@ -20,39 +21,19 @@ const page = () => {
     useEmail: false
   })
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  console.log(apiUrl);
-
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    })
-  }
-
-
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8080/user/new`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      if (response.ok) {
-        alert('User created successfully!')
+      const isSuccess = await saveUser(formData);
+      if (isSuccess) {
+        console.log('User created successfully!');
       } else {
-        alert('Failed to create user')
+        console.log('Failed to create user');
       }
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Error:', error);
     }
-  }
+  };
   
   return (
     <>
