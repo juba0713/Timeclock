@@ -1,0 +1,1 @@
+export const MSG_USER_CREATED = "User created successfully! 🎉";
