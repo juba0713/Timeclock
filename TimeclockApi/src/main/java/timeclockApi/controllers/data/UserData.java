@@ -1,6 +1,10 @@
-package timeclockApi.model.data;
+package timeclockApi.controllers.data;
 
+import java.util.Map;
+
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import timeclockApi.controllers.data.UserData;
 
 /**
  * User Data
@@ -9,32 +13,34 @@ import lombok.Data;
  */
 @Data
 public class UserData {
-
+	
+	@NotBlank(message="Email is required!")
 	private String email;
-	
+	@NotBlank(message="First Name is required!")
 	private String firstName;
-	
+	@NotBlank(message="Middle Name is required!")
 	private String middleName;
-	
+	@NotBlank(message="Last Name is required!")
 	private String lastName;
-	
+	@NotBlank(message="Birthdate is required!")
 	private String birthDate;
-	
+	@NotBlank(message="Gender is required!")
 	private String gender;
-	
+	@NotBlank(message="Employee Status is required!")
 	private String employeeStatus;
-	
+	@NotBlank(message="Hire Date is required!")
 	private String hireDate;
-	
+	@NotBlank(message="Team is required!")
 	private String team;
-	
+	@NotBlank(message="User Role is required!")
 	private String userRole;
-	
+	@NotBlank(message="Username is required!")
 	private String username;
-	
+	@NotBlank(message="Password is required!")
 	private String password;
-	
 	private Boolean useEmail;
+	
+	private Map<String, String> errors;
 	
 	@Override
 	public String toString() {
@@ -54,5 +60,4 @@ public class UserData {
 	            ", useEmail=" + useEmail +
 	            '}';
 	}
-
 }

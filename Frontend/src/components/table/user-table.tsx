@@ -17,9 +17,12 @@ const UserTable = () => {
         fetchData()
       }, [])
 
-    if (loading) {
-        return <Loading/>
-    }
+    const headers = ['Full Name', 'Manager', 'Team', 'Role', 'Status', 'Action'];
+    const users = [
+    { name: 'Julius Basas', manager: 'SuperAdmin', team: 'Team Admin', role: 'Admin', status: 'Active' },
+    { name: 'Julius Basas', manager: 'SuperAdmin', team: 'Team Admin', role: 'Admin', status: 'Active' },
+    { name: 'Julius Basas', manager: 'SuperAdmin', team: 'Team Admin', role: 'Admin', status: 'Active' },
+    ];
 
     return (
         <>
@@ -27,75 +30,33 @@ const UserTable = () => {
                 <table className="w-full">
                     <thead>
                         <tr>
-                            <th>
-                                <div className="th-content">
-                                    <UserRound size={16}/>
-                                    <span>Full Name</span>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="th-content">
-                                    <UserRound size={16}/>
-                                    <span>Manager</span>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="th-content">
-                                    <UserRound size={16}/>
-                                    <span>Team</span>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="th-content">
-                                    <UserRound size={16}/>
-                                    <span>Role</span>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="th-content">
-                                    <UserRound size={16}/>
-                                    <span>Status</span>
-                                </div>
-                            </th>
-                            <th>
-                                <div className="th-content">
-                                    <UserRound size={16}/>
-                                    <span>Action</span>
-                                </div>
-                            </th>
+                            {headers.map((header) => (
+                                <th key={header}>
+                                    <div className="th-content">
+                                    <UserRound size={16} />
+                                    <span>{header}</span>
+                                    </div>
+                                </th>
+                            ))}
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Julius Basas</td>
-                            <td>SuperAdmin</td>
-                            <td>Team Admin</td>
-                            <td>Admin</td>
-                            <td>Active</td>
-                            <td>
-                                Action
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Julius Basas</td>
-                            <td>SuperAdmin</td>
-                            <td>Team Admin</td>
-                            <td>Admin</td>
-                            <td>Active</td>
-                            <td>
-                                Action
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Julius Basas</td>
-                            <td>SuperAdmin</td>
-                            <td>Team Admin</td>
-                            <td>Admin</td>
-                            <td>Active</td>
-                            <td>
-                                Action
-                            </td>
-                        </tr>
+                        {loading ? (
+                            <tr>
+                            <td colSpan={headers.length} className="text-center py-4">Loading...</td>
+                            </tr>
+                        ) : (
+                            users.map((user, index) => (
+                            <tr key={index}>
+                                <td>{user.name}</td>
+                                <td>{user.manager}</td>
+                                <td>{user.team}</td>
+                                <td>{user.role}</td>
+                                <td>{user.status}</td>
+                                <td>Action</td>
+                            </tr>
+                            ))
+                        )}
                     </tbody>
                 </table>
             </div>

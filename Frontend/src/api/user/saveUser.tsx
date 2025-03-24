@@ -16,8 +16,12 @@ export type SaveUserParams = {
     useEmail: boolean;
   };
 
+export type result = {
+    status : number;
+    errors : Record<string, string>;
+}
   
-export async function saveUser(params : SaveUserParams) : Promise<boolean>{
+export async function saveUser(params : SaveUserParams){
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -28,11 +32,12 @@ export async function saveUser(params : SaveUserParams) : Promise<boolean>{
         },
         body: JSON.stringify(params),
       });
-    
-      if (!response.ok) {
-        return false;
-      }
-    
-      return true;
+
+      const data = await response.json();
+      
+      return {
+        status: response.status,
+        errors: data.errors
+      };
 }
   
