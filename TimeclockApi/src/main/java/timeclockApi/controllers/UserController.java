@@ -25,6 +25,8 @@ public class UserController {
 
 	@PostMapping("/user/new")
 	public ResponseEntity<?> newUser(@Valid @RequestBody UserData userData, BindingResult bindingResult) {
+		
+		System.out.println(userData.toString());
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
