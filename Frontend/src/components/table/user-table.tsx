@@ -1,6 +1,6 @@
 'use client';
 import Loading from '@/app/loading'
-import { UserRound } from 'lucide-react'
+import { Cog, Pin, UserRound } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
 const UserTable = () => {
@@ -33,7 +33,9 @@ const UserTable = () => {
                             {headers.map((header) => (
                                 <th key={header}>
                                     <div className="th-content">
-                                    <UserRound size={16} />
+                                    {header === "Role" && <Cog size={16} />}
+                                    {header === "Status" && <Pin size={16} />}
+                                    {["Full Name", "Manager", "Team"].includes(header) && <UserRound size={16} />}
                                     <span>{header}</span>
                                     </div>
                                 </th>
