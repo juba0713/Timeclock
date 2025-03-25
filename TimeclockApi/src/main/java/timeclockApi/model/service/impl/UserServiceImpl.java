@@ -1,6 +1,7 @@
 package timeclockApi.model.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import timeclockApi.model.dao.entity.UserEntity;
@@ -18,6 +19,9 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private UserLogic userLogic;
+	
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Override
 	public void saveUser(UserDto inDto) {
@@ -33,7 +37,7 @@ public class UserServiceImpl implements UserService{
 		user.setTeam(inDto.getUserData().getTeam());
 		user.setRole(inDto.getUserData().getUserRole());
 		user.setUsername(inDto.getUserData().getUsername());
-		user.setPassword(inDto.getUserData().getPassword());
+		user.setPassword(encoder.encode(inDto.getUserData().getPassword()));
 		
 		userLogic.saveUser(user);
 	}

@@ -3,6 +3,7 @@ import LoginForm from '@/components/(auth)/login-form';
 import React from 'react'
 
 const login = () => {
+
   return (
     <>
       <div className="container flex flex-col max-w-full h-full justify-center items-center">

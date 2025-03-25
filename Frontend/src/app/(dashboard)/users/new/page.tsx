@@ -29,6 +29,7 @@ const page = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    console.log("CHANGE");
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -88,7 +89,8 @@ const page = () => {
                 <input 
                   type="text" 
                   placeholder="Enter First Name]" 
-                  value={formData.firstName}
+                  name="firstName" 
+                  value={formData.firstName}              
                   onChange={handleChange}
                   className="w-full"
                 />
@@ -100,7 +102,7 @@ const page = () => {
                 <input 
                   type="text" 
                   placeholder="Enter Middle Name]" 
-                  value={formData.middleName}
+                  name="middleName" 
                   onChange={handleChange}
                   className="w-full"/>
                 {errors.middleName && (
@@ -111,7 +113,7 @@ const page = () => {
                 <input 
                   type="text" 
                   placeholder="Enter Last Name]" 
-                  value={formData.lastName}
+                  name="lastName" 
                   onChange={handleChange}
                   className="w-full"/>
                 {errors.lastName && (
@@ -126,7 +128,7 @@ const page = () => {
               <div className="w-[30%]">
                 <input 
                   type="date" 
-                  value={formData.birthDate}
+                  name="birthDate" 
                   onChange={handleChange}
                   className="w-full"/>
               </div>
@@ -140,8 +142,9 @@ const page = () => {
             <div className="px-[1rem] py-[0.5rem] box-border border-y-0 border-l-0 border-r border-b border-[#E0E0E0] w-full flex flex-col">
               <div className="w-[30%]">
                 <select 
-                  value={formData.gender}
                   onChange={handleChange}
+                  name="gender" 
+                  value={formData.gender}
                   className="w-full" 
                 >
                   <option value="" disabled hidden>Select Gender</option>
@@ -160,8 +163,9 @@ const page = () => {
             <div className="px-[1rem] py-[0.5rem] box-border border-y-0 border-l-0 border-r border-b border-[#E0E0E0] w-full flex flex-col">
               <div className="w-[30%]">
                 <select
-                  value={formData.employeeStatus}
                   onChange={handleChange} 
+                  name="employeeStatus" 
+                  value={formData.employeeStatus}
                   className="w-full" 
                 >
                   <option value="" disabled hidden>Select Status</option>
@@ -181,7 +185,7 @@ const page = () => {
               <div className="w-[30%]">
                 <input 
                   type="date" 
-                  value={formData.hireDate}
+                  name="hireDate" 
                   onChange={handleChange}
                   className="w-full"/>
               </div> 
@@ -195,8 +199,9 @@ const page = () => {
             <div className="px-[1rem] py-[0.5rem] box-border border-y-0 border-l-0 border-r border-b border-[#E0E0E0] w-full flex flex-col">
               <div className="w-[30%]">
                 <select 
-                  value={formData.team}
                   onChange={handleChange}
+                  name="team"
+                  value={formData.team}
                   className="w-full" 
                 >
                   <option value="" disabled hidden>Select Team</option>
@@ -213,8 +218,8 @@ const page = () => {
             <div className="px-[1rem] py-[0.5rem] box-border border-y-0 border-l-0 border-r border-b border-[#E0E0E0] w-full flex flex-col">
               <div className="w-[30%]">
                 <select 
-                  value={formData.userRole}
                   onChange={handleChange}
+                  name="userRole" 
                   className="w-full" 
                 >
                   <option value="" className="text-gray-50" disabled hidden>Select Role</option>
@@ -238,7 +243,7 @@ const page = () => {
                 <input 
                   type="text" 
                   placeholder="Enter username" 
-                  value={formData.username}
+                  name="username" 
                   onChange={handleChange}
                   className="w-[50%] text-[0.8rem]"/>
                 <div className="flex gap-[0.5rem]">
@@ -258,7 +263,7 @@ const page = () => {
                 <input 
                   type="password" 
                   placeholder="Enter password" 
-                  value={formData.password}
+                  name="password" 
                   onChange={handleChange}
                   className="w-full text-[0.8rem]"/>
               </div>  
