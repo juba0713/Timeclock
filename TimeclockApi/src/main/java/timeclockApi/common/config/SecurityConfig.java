@@ -12,7 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
 
+import jakarta.servlet.http.HttpServletResponse;
 import timeclockApi.model.dao.UserDao;
 import timeclockApi.model.dao.entity.UserEntity;
 
@@ -51,9 +53,11 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
+        		.requestMatchers("/api/user").hasAuthority("Admin")
+        		.requestMatchers("/api/auth").permitAll()
                 .anyRequest().permitAll()
             );
-
+        
         return http.build();
     }
 }

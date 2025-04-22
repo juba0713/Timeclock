@@ -1,8 +1,10 @@
 'use client';
-import React from 'react'
+import React, { FormEvent } from 'react'
 import { Clock, Image, LayoutDashboard, CalendarSync , CalendarCog, CalendarX2, Cog , Users, Group } from 'lucide-react';
 import Link from 'next/link'
 import { usePathname } from "next/navigation";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 
 
@@ -11,6 +13,25 @@ const Sidebar = () => {
     const pathname = usePathname();
     
     const title = pathname.split("/")[1]?.replace(/^\w/, (c) => c.toUpperCase());
+
+    axios.defaults.withCredentials = true;
+    const token = Cookies.get('token');
+    const handleLogout = async (e: FormEvent) => {
+        e.preventDefault();  // Prevent form submission
+        try {
+            console.log(token);
+          // Call the backend logout endpoint
+          await axios.post('http://localhost:8080/api/auth/logout', {}, { withCredentials: true});
+      
+          // Remove the cookie on the frontend (optional)
+          Cookies.remove('token', { path: '/' });
+      
+          // Redirect to login page
+          window.location.href = '/login';
+        } catch (error) {
+          console.error('Logout failed:', error);
+        }
+      };
 
   return (
     <>
@@ -60,25 +81,10 @@ const Sidebar = () => {
                 <a className="flex gap-[0.25rem] justify-left items-center py-[0.5rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><Group  size={20}/>Teams</a>
             </div>
             <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
-            <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
-                <label className="text-[0.6rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-[0.25rem] justify-left items-center py-[0.5rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
-            </div>
-            <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
-            <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
-                <label className="text-[0.6rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-[0.25rem] justify-left items-center py-[0.5rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
-            </div>
-            <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
-            <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
-                <label className="text-[0.6rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-[0.25rem] justify-left items-center py-[0.5rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
-            </div>
-            <hr className="w-[75%] mx-auto text-[#E0E0E0]"/>
-            <div className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
-                <label className="text-[0.6rem] text-[#498BFF] font-bold">Team Management</label>
-                <a className="flex gap-[0.25rem] justify-left items-center py-[0.5rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Teams</a>
-            </div>
+            <form onSubmit={handleLogout} className="flex flex-col gap-1 box-border px-[1rem] py-[0.5rem]">
+                <label className="text-[0.6rem] text-[#498BFF] font-bold">Logout</label>
+                <button className="flex gap-[0.25rem] justify-left items-center py-[0.5rem] px-[0.5rem] box-border rounded-[0.25rem] text-center hover:bg-[#498BFF] hover:text-[#ffffff]"><LayoutDashboard size={20}/>Logout</button>
+            </form>          
         </nav>
     </>
   )

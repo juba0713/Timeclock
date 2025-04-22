@@ -7,11 +7,18 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import jakarta.annotation.PostConstruct;
+
 @Configuration
 public class CorsConfig {
 	
 	@Value("${cors.allowed-origin}")
 	private String url;
+	
+	@PostConstruct
+	public void init() {
+	    System.out.println("CORS Allowed Origin: " + url);
+	}
 
 	@Bean
     CorsFilter corsFilter() {
@@ -20,6 +27,7 @@ public class CorsConfig {
         config.addAllowedOrigin(url);
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+        config.setAllowCredentials(true);
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
